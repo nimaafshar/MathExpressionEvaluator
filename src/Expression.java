@@ -43,7 +43,7 @@ public class Expression {
                     Operator now = (Operator) tokens.get(i);
                     if ((pre != Operator.LEFT_PARENTHESES && pre != Operator.RIGHT_PARENTHESES && now != Operator.LEFT_PARENTHESES && now != Operator.RIGHT_PARENTHESES)
                             || (pre == Operator.LEFT_PARENTHESES && now == Operator.RIGHT_PARENTHESES))
-                        throw new ExpressionFormatException();
+                        throw new ExpressionFormatException("neighboring Operators");
                 }
                 Operator token = (Operator) tokens.get(i);
 
@@ -52,7 +52,7 @@ public class Expression {
                         parenthesisStack.push((Operator) token);
                         break;
                     case RIGHT_PARENTHESES:
-                        if (parenthesisStack.empty()) throw new ExpressionFormatException("Parenthesis eror");
+                        if (parenthesisStack.empty()) throw new ExpressionFormatException("Parenthesis error");
                         parenthesisStack.pop();
                         break;
                 }
@@ -147,5 +147,3 @@ public class Expression {
 
 
 }
-//3 + 4 × 2 ÷ ( 1 − 5 ) ^ 2 ^ 3
-//3 + 4 * 2 / ( 1 - 5) ^ 2 ^ 3

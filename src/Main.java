@@ -9,8 +9,8 @@ public class Main {
         Expression expression = new Expression(a);
         try {
             System.out.println(expression.evaluate());
-        } catch (TokenizeException | ExpressionFormatException e) {
-            e.printStackTrace();
+        } catch (TokenizeException | ExpressionFormatException | NumberFormatException e) {
+            System.out.println("Error: "+e.getMessage());
         }
     }
 }
