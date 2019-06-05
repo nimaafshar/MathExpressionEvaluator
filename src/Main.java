@@ -6,16 +6,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String a = scanner.nextLine();
-//        Expression expression = new Expression(a);
-        /*
-        Test Phase
-         */
-        Tokenizer tokenizer = new Tokenizer(a);
+        Expression expression = new Expression(a);
         try {
-            ArrayList<String> tokens = tokenizer.tokenize();
-            System.out.println(tokens);
-        } catch (TokenizeException e) {
-            System.out.println("not found any");
+            System.out.println(expression.evaluate());
+        } catch (TokenizeException | ExpressionFormatException e) {
+            e.printStackTrace();
         }
     }
 }
+//((15 ÷ (7 − (1 + 1))) × 3) − (2 + (1 + 1))
+//((15 / (7 - (1 + 1))) * 3) - (2 + (1 + 1))
